@@ -148,6 +148,7 @@ public class MostrarCaso extends javax.swing.JPanel {
         tabla.setRowSorter(trs);        
     }//GEN-LAST:event_txtNumeroKeyTyped
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;

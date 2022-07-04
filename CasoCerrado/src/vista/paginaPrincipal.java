@@ -160,7 +160,12 @@ public class paginaPrincipal extends javax.swing.JPanel {
 
     private void registrarCasosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarCasosActionPerformed
         util.showPanel(inicio.content, registrarCaso);
+        this.registrarCaso.boxDetective.removeAllItems();
+        this.registrarCaso.boxDetective.addItem("Seleccionar...");
+        this.registrarCaso.boxSegundo.removeAllItems();
+        this.registrarCaso.boxSegundo.addItem("Seleccionar...");
         
+                
         List<Persona> lista = Detectives.modelo.leerDetectives();
             for (Persona c: lista) {
                 this.registrarCaso.boxDetective.addItem(c.getNombre1());

@@ -100,11 +100,11 @@ public class Iniciar extends javax.swing.JPanel {
 
         txtContraseña.setBackground(new java.awt.Color(204, 204, 255));
         txtContraseña.setBorder(null);
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 220, 30));
+        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 220, 20));
 
         txtUsuario.setBackground(new java.awt.Color(204, 204, 255));
         txtUsuario.setBorder(null);
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 260, 30));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 260, 20));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 698, 500));
     }// </editor-fold>//GEN-END:initComponents

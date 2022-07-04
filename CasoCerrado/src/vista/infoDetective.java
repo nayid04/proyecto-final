@@ -5,13 +5,18 @@
  */
 package vista;
 
+import Persistencia.ArchivoTxt;
 import Utilidades.Interfaz;
 import java.awt.event.KeyAdapter;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.casos.ListaCasos;
+import modelo.personas.Detective;
 import modelo.personas.ListaDetective;
+import modelo.personas.Persona;
+import static vista.infoSospechoso.archivo;
 
 /**
  *
@@ -23,6 +28,7 @@ public class infoDetective extends javax.swing.JPanel {
      * Creates new form infoDetective
      */
     public static Interfaz util;
+    public static ArchivoTxt archivo;
     public static Detectives detec;
     private ListaDetective modelo;
     DefaultTableModel modelo_tabla;
@@ -33,6 +39,7 @@ public class infoDetective extends javax.swing.JPanel {
         initComponents();
         util = new Interfaz();
         detec = new Detectives();
+        archivo = new ArchivoTxt();
         this.modelo = new ListaDetective();
         //leerPublicaciones();
         modelo_tabla = new DefaultTableModel();
@@ -132,6 +139,11 @@ public class infoDetective extends javax.swing.JPanel {
 
         botonEliminar.setBackground(new java.awt.Color(181, 220, 240));
         botonEliminar.setText("ELIMINAR");
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
         jPanel1.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -173,6 +185,32 @@ public class infoDetective extends javax.swing.JPanel {
         util.showPanel(inicio.content, detec);
     }//GEN-LAST:event_botonRegistarActionPerformed
 
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        int fila = tabla.getSelectedRow();
+        String isbn = String.valueOf(modelo_tabla.getValueAt(fila, 0));
+
+        if (fila >= 0) {
+            modelo_tabla.removeRow(fila);
+            eliminarDetective(isbn);
+            archivo.guardarTextDetectives(tabla, modelo_tabla);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "seleccione un fila");
+        }
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    public void eliminarDetective(String isbn) {
+
+        Persona pBusqueda = new Detective(isbn);
+
+        Persona pEliminada = Detectives.modelo.eliminarDetectives(pBusqueda);
+        if (pEliminada != null) {
+            JOptionPane.showMessageDialog(null, "\n!! Detective eliminado ¡¡");
+        } else {
+            JOptionPane.showMessageDialog(null, "\n!! el Detective no se encuentra registrado ¡¡");
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton botonEliminar;
