@@ -1,0 +1,3 @@
+45678;alek;goku;mamberroi;chicogel;Homicidio;46
+45678;juan;goku;mamberroi;chicogel;Homicidio;46
+45678;luisa;goku;mamberroi;chicogel;Ciber Crimen;46
