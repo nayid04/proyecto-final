@@ -34,6 +34,9 @@ public class paginaPrincipal extends javax.swing.JPanel {
         mCasos = new MostrarCaso();
         detec = new infoDetective();
         sospe = new infoSospechoso();
+        archivo.limpiarTextCasos();
+        archivo.limpiarTextDetectives();
+        archivo.limpiarTextSospechosos();
     }
 
     /**
@@ -163,6 +166,7 @@ public class paginaPrincipal extends javax.swing.JPanel {
                 this.registrarCaso.boxDetective.addItem(c.getNombre1());
                 this.registrarCaso.boxSegundo.addItem(c.getNombre1());
             }
+        registrarCaso.verificarDetectives();
     }//GEN-LAST:event_registrarCasosActionPerformed
 
     private void consultarCasosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarCasosActionPerformed

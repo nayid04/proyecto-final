@@ -106,7 +106,12 @@ public class sospechosos extends javax.swing.JPanel {
 
         nombre2.setBackground(new java.awt.Color(204, 204, 255));
         nombre2.setBorder(null);
-        panelPrincipal.add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 130, 20));
+        nombre2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombre2KeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 140, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("ingrese segundo apellido:");
@@ -129,14 +134,29 @@ public class sospechosos extends javax.swing.JPanel {
 
         caracteristicas.setBackground(new java.awt.Color(204, 204, 255));
         caracteristicas.setBorder(null);
+        caracteristicas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                caracteristicasKeyTyped(evt);
+            }
+        });
         panelPrincipal.add(caracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 210, 20));
 
         id.setBackground(new java.awt.Color(204, 204, 255));
         id.setBorder(null);
-        panelPrincipal.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 220, 20));
+        id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idKeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 230, 20));
 
         apellido2.setBackground(new java.awt.Color(204, 204, 255));
         apellido2.setBorder(null);
+        apellido2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellido2KeyTyped(evt);
+            }
+        });
         panelPrincipal.add(apellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 130, 20));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -163,14 +183,34 @@ public class sospechosos extends javax.swing.JPanel {
 
         nombre1.setBackground(new java.awt.Color(204, 204, 255));
         nombre1.setBorder(null);
+        nombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombre1ActionPerformed(evt);
+            }
+        });
+        nombre1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombre1KeyTyped(evt);
+            }
+        });
         panelPrincipal.add(nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 150, 20));
 
         apellido1.setBackground(new java.awt.Color(204, 204, 255));
         apellido1.setBorder(null);
+        apellido1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellido1KeyTyped(evt);
+            }
+        });
         panelPrincipal.add(apellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 150, 20));
 
         alias.setBackground(new java.awt.Color(204, 204, 255));
         alias.setBorder(null);
+        alias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                aliasKeyTyped(evt);
+            }
+        });
         panelPrincipal.add(alias, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 290, 20));
         panelPrincipal.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 290, 10));
 
@@ -180,12 +220,22 @@ public class sospechosos extends javax.swing.JPanel {
 
         edad.setBackground(new java.awt.Color(204, 204, 255));
         edad.setBorder(null);
+        edad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edadKeyTyped(evt);
+            }
+        });
         panelPrincipal.add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 200, 20));
         panelPrincipal.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 200, 10));
         panelPrincipal.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 190, 10));
 
         direccion.setBackground(new java.awt.Color(204, 204, 255));
         direccion.setBorder(null);
+        direccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                direccionKeyTyped(evt);
+            }
+        });
         panelPrincipal.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 190, 20));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -205,7 +255,8 @@ public class sospechosos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        util.showPanel(inicio.content, paginaPrincipal.sospe);
+        //util.showPanel(inicio.content, paginaPrincipal.sospe);
+        util.showPanel(inicio.content, Iniciar.menu);
         util.limpiarTabla(paginaPrincipal.sospe.modelo_tabla);
         archivo.datosTextSospechosos(paginaPrincipal.sospe.modelo_tabla);
         
@@ -218,12 +269,66 @@ public class sospechosos extends javax.swing.JPanel {
             leerNuevoSospechoso();
             registrarCaso();
             archivo.textSospechosos(modelo);
+            JOptionPane.showMessageDialog(null, "Datos guardados!");
+            limpiar();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void aliasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aliasKeyTyped
+        util.letrasYespacios(evt);
+    }//GEN-LAST:event_aliasKeyTyped
+
+    private void caracteristicasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_caracteristicasKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_caracteristicasKeyTyped
+
+    private void idKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idKeyTyped
+        util.soloNumeros(evt);
+    }//GEN-LAST:event_idKeyTyped
+
+    private void nombre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre1KeyTyped
+        util.soloTexto(evt);
+    }//GEN-LAST:event_nombre1KeyTyped
+
+    private void nombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre2KeyTyped
+        util.soloTexto(evt);
+    }//GEN-LAST:event_nombre2KeyTyped
+
+    private void apellido1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellido1KeyTyped
+        util.soloTexto(evt);
+    }//GEN-LAST:event_apellido1KeyTyped
+
+    private void apellido2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellido2KeyTyped
+        util.soloTexto(evt);
+    }//GEN-LAST:event_apellido2KeyTyped
+
+    private void edadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edadKeyTyped
+        util.soloNumeros(evt);
+    }//GEN-LAST:event_edadKeyTyped
+
+    private void direccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_direccionKeyTyped
+        
+    }//GEN-LAST:event_direccionKeyTyped
+
+    private void nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre1ActionPerformed
+        
+    }//GEN-LAST:event_nombre1ActionPerformed
 
     public void registrarCaso() {
         Persona nuevoSospechoso = this.leerNuevoSospechoso();
         this.modelo.insertarSospechosos(nuevoSospechoso);
+    }
+    
+    public void limpiar(){
+        alias.setText("");
+        caracteristicas.setText("");
+        id.setText("");
+        nombre1.setText("");
+        nombre2.setText("");
+        apellido1.setText("");
+        apellido2.setText("");
+        edad.setText("");
+        direccion.setText("");
     }
 
     public Persona leerNuevoSospechoso() {
@@ -235,7 +340,7 @@ public class sospechosos extends javax.swing.JPanel {
         String nombre2 = this.nombre2.getText();
         String apellido1 = this.apellido1.getText();
         String apellido2 = this.apellido2.getText();
-        byte edad = Byte.parseByte(this.edad.getText());
+        int edad = Integer.parseInt(this.edad.getText());
         String direccion = this.direccion.getText();
         persona = new Sospechoso(alias, caracteristicas,direccion,edad, id, nombre1, nombre2, apellido1,apellido2);
 
@@ -273,7 +378,7 @@ public class sospechosos extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField nombre1;
+    public static javax.swing.JTextField nombre1;
     private javax.swing.JTextField nombre2;
     public static javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables

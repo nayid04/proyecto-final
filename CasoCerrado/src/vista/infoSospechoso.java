@@ -63,8 +63,8 @@ public class infoSospechoso extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         id = new javax.swing.JTextField();
-        botonRegistar = new javax.swing.JToggleButton();
         botonEliminar = new javax.swing.JToggleButton();
+        botonRegistar = new javax.swing.JToggleButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -124,6 +124,12 @@ public class infoSospechoso extends javax.swing.JPanel {
         });
         jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 280, 180, 20));
 
+        botonEliminar.setBackground(new java.awt.Color(181, 220, 240));
+        botonEliminar.setText("ELIMINAR");
+        jPanel1.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 698, 498));
+
         botonRegistar.setBackground(new java.awt.Color(181, 220, 240));
         botonRegistar.setText("REGISTRAR");
         botonRegistar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,13 +137,7 @@ public class infoSospechoso extends javax.swing.JPanel {
                 botonRegistarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonRegistar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
-
-        botonEliminar.setBackground(new java.awt.Color(181, 220, 240));
-        botonEliminar.setText("ELIMINAR");
-        jPanel1.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 698, 498));
+        add(botonRegistar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

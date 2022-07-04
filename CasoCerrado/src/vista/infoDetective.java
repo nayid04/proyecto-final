@@ -150,10 +150,6 @@ public class infoDetective extends javax.swing.JPanel {
         util.showPanel(inicio.content, Iniciar.menu);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void botonRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistarActionPerformed
-        util.showPanel(inicio.content, detec);
-    }//GEN-LAST:event_botonRegistarActionPerformed
-
     private void idKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idKeyTyped
         int key = evt.getKeyChar();
 
@@ -172,6 +168,10 @@ public class infoDetective extends javax.swing.JPanel {
         trs = new TableRowSorter(modelo_tabla);
         tabla.setRowSorter(trs);   
     }//GEN-LAST:event_idKeyTyped
+
+    private void botonRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistarActionPerformed
+        util.showPanel(inicio.content, detec);
+    }//GEN-LAST:event_botonRegistarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

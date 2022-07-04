@@ -97,6 +97,11 @@ public class Detectives extends javax.swing.JPanel {
 
         nombre2.setBackground(new java.awt.Color(204, 204, 255));
         nombre2.setBorder(null);
+        nombre2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombre2KeyTyped(evt);
+            }
+        });
         panelPrincipal.add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 170, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -120,15 +125,30 @@ public class Detectives extends javax.swing.JPanel {
 
         experiencia.setBackground(new java.awt.Color(204, 204, 255));
         experiencia.setBorder(null);
+        experiencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                experienciaKeyTyped(evt);
+            }
+        });
         panelPrincipal.add(experiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 280, 20));
 
         id.setBackground(new java.awt.Color(204, 204, 255));
         id.setBorder(null);
-        panelPrincipal.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 260, 20));
+        id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idKeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 270, 20));
 
         apellido2.setBackground(new java.awt.Color(204, 204, 255));
         apellido2.setBorder(null);
-        panelPrincipal.add(apellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 190, 20));
+        apellido2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellido2KeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(apellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 200, 20));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("capacitado:");
@@ -155,10 +175,20 @@ public class Detectives extends javax.swing.JPanel {
 
         nombre1.setBackground(new java.awt.Color(204, 204, 255));
         nombre1.setBorder(null);
+        nombre1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombre1KeyTyped(evt);
+            }
+        });
         panelPrincipal.add(nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 190, 20));
 
         apellido1.setBackground(new java.awt.Color(204, 204, 255));
         apellido1.setBorder(null);
+        apellido1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellido1KeyTyped(evt);
+            }
+        });
         panelPrincipal.add(apellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 190, 20));
 
         capacitado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccione...", "Ciber Crimen", "Homicidio", "Narcotrafico" }));
@@ -177,7 +207,8 @@ public class Detectives extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        util.showPanel(inicio.content, paginaPrincipal.detec);
+        //util.showPanel(inicio.content, paginaPrincipal.detec);
+        util.showPanel(inicio.content, Iniciar.menu);
         util.limpiarTabla(paginaPrincipal.detec.modelo_tabla);
         txt1.datosTextDetectives(paginaPrincipal.detec.modelo_tabla);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -189,9 +220,45 @@ public class Detectives extends javax.swing.JPanel {
             leerNuevoDetective();
             registrarCaso();
             txt1.textDetectives(modelo);
+            limpiarDatos();
+            JOptionPane.showMessageDialog(null, "Datos guardados!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void experienciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_experienciaKeyTyped
+        util.soloNumeros(evt);
+    }//GEN-LAST:event_experienciaKeyTyped
+
+    private void idKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idKeyTyped
+        util.soloNumeros(evt);
+    }//GEN-LAST:event_idKeyTyped
+
+    private void nombre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre1KeyTyped
+        util.soloTexto(evt);
+    }//GEN-LAST:event_nombre1KeyTyped
+
+    private void nombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre2KeyTyped
+        util.soloTexto(evt);
+    }//GEN-LAST:event_nombre2KeyTyped
+
+    private void apellido1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellido1KeyTyped
+        util.soloTexto(evt);
+    }//GEN-LAST:event_apellido1KeyTyped
+
+    private void apellido2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellido2KeyTyped
+        util.soloTexto(evt);
+    }//GEN-LAST:event_apellido2KeyTyped
+
+    public void limpiarDatos(){
+        experiencia.setText("");
+        capacitado.setSelectedIndex(0);
+        id.setText("");
+        nombre1.setText("");
+        nombre2.setText("");
+        apellido1.setText("");
+        apellido2.setText("");
+    }
+    
     public void registrarCaso() {
         Persona nuevoDetective = this.leerNuevoDetective();
         this.modelo.insertarDetectives(nuevoDetective);
@@ -199,7 +266,7 @@ public class Detectives extends javax.swing.JPanel {
 
     public Persona leerNuevoDetective() {
 
-        byte experiencia = Byte.parseByte(this.experiencia.getText());
+        int experiencia = Integer.parseInt(this.experiencia.getText());
         String capacitado = String.valueOf(this.capacitado.getSelectedItem());
         String id =this.id.getText();
         String nombre1 = this.nombre1.getText();

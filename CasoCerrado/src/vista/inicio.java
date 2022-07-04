@@ -43,6 +43,7 @@ public class inicio extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrincipal.setBackground(new java.awt.Color(204, 204, 255));
+        panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -53,46 +54,27 @@ public class inicio extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagen_2022-07-02_001027389.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        panelPrincipal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         botonRegistrarse.setBackground(new java.awt.Color(181, 220, 240));
-        botonRegistrarse.setText("Registrarse");
+        botonRegistrarse.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        botonRegistrarse.setText("Salir");
         botonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegistrarseActionPerformed(evt);
             }
         });
+        panelPrincipal.add(botonRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 200, 160));
 
         botonIngresar.setBackground(new java.awt.Color(181, 220, 240));
+        botonIngresar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botonIngresar.setText("Ingresar");
         botonIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonIngresarActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
-        panelPrincipal.setLayout(panelPrincipalLayout);
-        panelPrincipalLayout.setHorizontalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(botonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(131, 131, 131))
-        );
-        panelPrincipalLayout.setVerticalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(146, Short.MAX_VALUE))
-        );
+        panelPrincipal.add(botonIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 197, 161));
 
         getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
@@ -120,8 +102,9 @@ public class inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botonIngresarActionPerformed
 
     private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
-        util.showPanel(content,registrar);
-        panelPrincipal.setVisible(false);
+        /*util.showPanel(content,registrar);
+        panelPrincipal.setVisible(false);*/
+        System.exit(0);
     }//GEN-LAST:event_botonRegistrarseActionPerformed
 
     /**

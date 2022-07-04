@@ -6,6 +6,7 @@
 package vista;
 
 import Utilidades.Interfaz;
+import javax.swing.JOptionPane;
 import static vista.inicio.util;
 
 /**
@@ -46,6 +47,8 @@ public class Iniciar extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
+        txtContraseña = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -60,6 +63,11 @@ public class Iniciar extends javax.swing.JPanel {
 
         jButton2.setBackground(new java.awt.Color(181, 220, 240));
         jButton2.setText("X");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagen_2022-07-02_001027389.png"))); // NOI18N
@@ -78,7 +86,7 @@ public class Iniciar extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Usuario:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 250, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 276, 259, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 259, 10));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 360, 230, 10));
 
         jButton1.setBackground(new java.awt.Color(181, 220, 240));
@@ -90,12 +98,30 @@ public class Iniciar extends javax.swing.JPanel {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 409, -1, -1));
 
+        txtContraseña.setBackground(new java.awt.Color(204, 204, 255));
+        txtContraseña.setBorder(null);
+        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 220, 30));
+
+        txtUsuario.setBackground(new java.awt.Color(204, 204, 255));
+        txtUsuario.setBorder(null);
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 260, 30));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 698, 500));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        util.showPanel(inicio.content,menu);
+        if(txtUsuario.getText().equals("") || txtContraseña.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Complete todas las casillas!");
+        }else{
+            util.showPanel(inicio.content,menu);
+            JOptionPane.showMessageDialog(null, "Bienvenido");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -110,5 +136,7 @@ public class Iniciar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

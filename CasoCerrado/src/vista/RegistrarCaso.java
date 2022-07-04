@@ -11,6 +11,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.casos.*;
 import modelo.personas.*;
+import static vista.infoDetective.detec;
+import static vista.infoSospechoso.sospe1;
 
 /**
  *
@@ -22,9 +24,11 @@ public class RegistrarCaso extends javax.swing.JPanel {
     public static ListaCasos modelo;
     public static Caso caso;
     public static ArchivoTxt txt;
+    public static String sospechoso;
 
     public RegistrarCaso() {
         initComponents();
+        sospechoso="";
         util = new Interfaz();
         modelo = new ListaCasos();
         txt = new ArchivoTxt();
@@ -50,7 +54,7 @@ public class RegistrarCaso extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        registrar = new javax.swing.JButton();
         boxTipoCaso = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -97,14 +101,14 @@ public class RegistrarCaso extends javax.swing.JPanel {
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 230, 10));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 180, 10));
 
-        jButton1.setBackground(new java.awt.Color(181, 220, 240));
-        jButton1.setText("Registrar Caso");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        registrar.setBackground(new java.awt.Color(181, 220, 240));
+        registrar.setText("Registrar Caso");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                registrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 120, 30));
+        jPanel1.add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 120, 30));
 
         boxTipoCaso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "Ciber Crimen", "Homicidio", "Narcotrafico" }));
         boxTipoCaso.addActionListener(new java.awt.event.ActionListener() {
@@ -259,20 +263,10 @@ public class RegistrarCaso extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         boolean vacio = true;
-        int tamano = boxDetective.getItemCount();
-        String arreglo[] = {"Si", "No"};
-        int opcion = 0;
-        if (tamano == 1) {
-            opcion = JOptionPane.showOptionDialog(null, "No hay detectives registrados\n¿Desea registar uno?", "error", 0, JOptionPane.QUESTION_MESSAGE, null, arreglo, "");
-            vacio = true;
-        } else {
-            vacio = false;
-        }
-        if (opcion == 0) {
-        }
         
+        verificarDetectives();
         if (txtNoCaso.getText().equals("") || boxPrioridad.getSelectedIndex() == 0 || boxDetective.getSelectedIndex() == 0 || txtSospechoso.getText().equals("") || txtNombre.getText().equals("") || boxTipoCaso.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "complete todos los datos");
         }
@@ -300,19 +294,22 @@ public class RegistrarCaso extends javax.swing.JPanel {
                 vacio = false;
             }
         }
-        if (verificarNoCaso()) {
+        /*if (verificarNoCaso()) {
             JOptionPane.showMessageDialog(null, "N0 de caso ya registrado, ingrese otro!");
             vacio = true;
         } else {
             vacio = false;
-        }
+        }*/
         if (vacio == false) {
             leerNuevoCaso();
             registrarCaso();
             txt.textCasos(this.modelo);
             JOptionPane.showMessageDialog(null, "Datos guardados!");
+            util.showPanel(inicio.content, infoSospechoso.sospe1);
+            sospechosos.nombre1.setText(sospechoso);
+            JOptionPane.showMessageDialog(null, "Ingrese los datos del sospechoso.");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_registrarActionPerformed
 
     private void txtNoCasoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoCasoKeyTyped
         util.soloNumeros(evt);
@@ -332,11 +329,7 @@ public class RegistrarCaso extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSospechosoActionPerformed
 
     private void txtSospechosoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSospechosoKeyTyped
-        if (txtNombre.getText().isEmpty()) {
-            util.letrasYnumeros(evt);
-        } else {
-            util.lestrasYnumerosYespacios(evt);
-        }
+        util.soloTexto(evt);
     }//GEN-LAST:event_txtSospechosoKeyTyped
 
     private void boxTipoCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTipoCasoActionPerformed
@@ -373,18 +366,31 @@ public class RegistrarCaso extends javax.swing.JPanel {
             List<Caso> lista = modelo.leerCasos();
             for (Caso c : lista) {
                 if (num == c.getNoCaso()) {
-
                     repet = true;
                 }
             }
         }catch(java.lang.NumberFormatException e)
         {
             System.out.println("no se pudo");
-            System.exit(0);
         }
         return repet;
     }
 
+    public void verificarDetectives(){
+        int tamano = boxDetective.getItemCount();
+        String arreglo[] = {"Si", "No"};
+        int opcion = 0;
+        if (tamano == 1) {
+            opcion = JOptionPane.showOptionDialog(null, "No hay detectives registrados\n¿Desea registar uno?", "error", 0, JOptionPane.QUESTION_MESSAGE, null, arreglo, "");
+        } 
+        if (opcion == 0) {
+            paginaPrincipal.util.showPanel(inicio.content, detec);
+        }
+        if(tamano>1){
+            paginaPrincipal.util.showPanel(inicio.content, paginaPrincipal.registrarCaso);
+        }
+    }
+    
     public void registrarCaso() {
         Caso nuevoCaso = this.leerNuevoCaso();
         this.modelo.insertarCasos(nuevoCaso);
@@ -395,7 +401,7 @@ public class RegistrarCaso extends javax.swing.JPanel {
         int noCaso = Integer.parseInt(txtNoCaso.getText());
         String prioridad = String.valueOf(boxPrioridad.getSelectedItem());
         String detective = String.valueOf(boxDetective.getSelectedItem());
-        String sospechoso = String.valueOf(txtSospechoso.getText());
+        sospechoso = String.valueOf(txtSospechoso.getText());
         String nombreCaso = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
         int tipo = boxTipoCaso.getSelectedIndex();
@@ -424,7 +430,6 @@ public class RegistrarCaso extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> boxTipoCiber;
     private javax.swing.JComboBox<String> boxTipoNarcotrafico;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -447,6 +452,7 @@ public class RegistrarCaso extends javax.swing.JPanel {
     private javax.swing.JPanel panelCiberCrimen;
     private javax.swing.JPanel panelHomicidio;
     private javax.swing.JPanel panelNarcotrafico;
+    private javax.swing.JButton registrar;
     private javax.swing.JTextArea txtDescripcion;
     public static javax.swing.JTextField txtNoCaso;
     private javax.swing.JTextField txtNombre;

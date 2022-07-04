@@ -4,10 +4,10 @@ import modelo.Direccion;
 
 public class Detective extends Persona {
     
-    private byte experiencia;
+    private int experiencia;
     private String capacitado;
 
-    public Detective(byte experiencia, String capacitado, String id, String nombre1, String nombre2, String apellido1, String apellido2) {
+    public Detective(int experiencia, String capacitado, String id, String nombre1, String nombre2, String apellido1, String apellido2) {
         super(id, nombre1, nombre2, apellido1, apellido2);
         this.experiencia = experiencia;
         this.capacitado = capacitado;
@@ -18,9 +18,9 @@ public class Detective extends Persona {
         this.capacitado = "";
     }
     
-    public void setExp(byte experiencia){this.experiencia = experiencia;}
+    public void setExp(int experiencia){this.experiencia = experiencia;}
     public void setCap(String capacitado){this.capacitado = capacitado;}
-    public byte getExp(){return this.experiencia;}
+    public int getExp(){return this.experiencia;}
     public String getCap(){return this.capacitado;}
 
     @Override
